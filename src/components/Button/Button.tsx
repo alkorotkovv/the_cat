@@ -10,8 +10,9 @@ interface ButtonProps {
 }
 
 const StyledButton = styled.button<Omit<ButtonProps, 'children' | 'onClick'>>`
-  background-color: ${({ bgColor, enabled }) => enabled ? bgColor : 'red'};
-  color: ${({ color }) => color};;
+  background-color: ${({ bgColor, enabled }) => enabled ? bgColor : 'darkgrey'};
+  color: ${({ color, enabled }) => enabled ? color : 'lightgrey'};
+  border: none;
   border-radius: 4px;
   padding: 8px 26px;
   font-size: 1rem;
@@ -24,10 +25,10 @@ const StyledButton = styled.button<Omit<ButtonProps, 'children' | 'onClick'>>`
 `;
 
 export const Button: React.FC<ButtonProps> = ({
-  children = '', 
-  onClick, 
-  bgColor = 'white', 
-  color = 'black', 
+  children = '',
+  onClick,
+  bgColor = 'white',
+  color = 'black',
   enabled = true
 }) => {
 

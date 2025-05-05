@@ -40,7 +40,7 @@ export const App: React.FC = () => {
 
   return (
     <div className={styles.app}>
-      <div className={styles.checkboxes}>
+      <section className={styles.checkboxes}>
         <Checkbox
           label="Enable"
           checked={isChecked1}
@@ -53,18 +53,18 @@ export const App: React.FC = () => {
           disabled={false}
           onChange={() => setIsChecked2(!isChecked2)}
         />
-      </div>
-      <div className={styles.button}>
+      </section>
+      <section className={styles.button}>
         <Button
           onClick={getCatImage}
-          bgColor='lightgrey'
-          color='black'
+          bgColor='#2196f3'
+          color='white'
           enabled={isChecked1}
         >
           Get Cat
         </Button>
-      </div>
-      <div className={styles.content}>
+      </section>
+      <section className={styles.content}>
       {
         loading
         ? <p>Загрузка изображения...</p>
@@ -72,7 +72,7 @@ export const App: React.FC = () => {
           ? <p>Ошибка загрузки данных</p>
           : <Image image={image} />
       }
-      </div>
+      </section>
     </div>
   );
 };

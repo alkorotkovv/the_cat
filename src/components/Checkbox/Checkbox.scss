@@ -1,3 +1,5 @@
+$base-color: #2196f3;
+
 .checkbox-container {
   display: flex;
   align-items: center;
@@ -22,8 +24,8 @@
   transition: all 0.2s ease;
 
   &:checked {
-    background-color: #2196f3;
-    border-color: #2196f3;
+    background-color: $base-color;
+    border-color: $base-color;
 
     &::after {
       content: '';
