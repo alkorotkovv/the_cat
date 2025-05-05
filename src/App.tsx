@@ -4,6 +4,10 @@ import { Checkbox } from './components/Checkbox/Checkbox';
 import { Button } from './components/Button/Button';
 import { Image } from './components/Image/Image';
 import axios from 'axios';
+import {
+  CONST_DELAY,
+  CONST_BASE_URL
+} from './utils/constants' 
 
 export const App: React.FC = () => {
  
@@ -15,13 +19,13 @@ export const App: React.FC = () => {
 
   useEffect(()  => {
     let interval: number;
-    if (isChecked2) interval = window.setInterval(() => getCatImage(), 2000);
+    if (isChecked2) interval = window.setInterval(() => getCatImage(), CONST_DELAY);
     return () => clearInterval(interval);
   }, [isChecked2]);
 
   const getCatImage = async() => {
     setLoading(true);
-    axios.get('https://api.thecatapi.com/v1/images/search')
+    axios.get(CONST_BASE_URL + '/v1/images/search')
     .then(res => {
       setImage(res.data[0]);
     })
