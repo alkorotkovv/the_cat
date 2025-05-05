@@ -1,0 +1,28 @@
+.app {
+    display: grid;
+    grid-template-areas: 
+        'checkboxes'
+        'button'
+        'content';
+    /* flex-direction: column;
+    align-items: center; */
+    gap: 10px;
+}
+
+.checkboxes {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 5px;
+    grid-area: checkboxes;
+}
+
+.button {
+    display: flex;
+    grid-area: button;
+}
+
+.content {
+    display: flex;
+    grid-area: content;
+}
