@@ -30,7 +30,6 @@ export const App: React.FC = () => {
     setLoading(true);
     axios.get(CONST_BASE_URL + '/v1/images/search')
     .then(res => {
-      console.log(res)
       setImage(res.data[0]);
     })
     .catch(err => {
