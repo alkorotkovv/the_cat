@@ -1,23 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './App.module.css';
 import { Checkbox } from './components/Checkbox/Checkbox';
 import { Button } from './components/Button/Button';
 import { Image } from './components/Image/Image';
+import { Text } from './components/Text/Text';
 import axios from 'axios';
 import {
   CONST_DELAY,
   CONST_BASE_URL
-} from './utils/constants' 
+} from './utils/constants';
+import {useUpdateEffect} from './hooks/useUpdateEffect';
+import {IImage} from './types/app';
 
 export const App: React.FC = () => {
  
-  const [isChecked1, setIsChecked1] = useState(true);
-  const [isChecked2, setIsChecked2] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [image, setImage] = useState({});
-  const [error, setError] = useState(false)
+  const [isChecked1, setIsChecked1] = useState<boolean>(true);
+  const [isChecked2, setIsChecked2] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [image, setImage] = useState<IImage>({});
+  const [error, setError] = useState<boolean>(false)
 
-  useEffect(()  => {
+  useUpdateEffect(()  => {
     let interval: number;
     if (isChecked2) interval = window.setInterval(() => getCatImage(), CONST_DELAY);
     return () => clearInterval(interval);
@@ -27,6 +30,7 @@ export const App: React.FC = () => {
     setLoading(true);
     axios.get(CONST_BASE_URL + '/v1/images/search')
     .then(res => {
+      console.log(res)
       setImage(res.data[0]);
     })
     .catch(err => {
@@ -67,10 +71,10 @@ export const App: React.FC = () => {
       <section className={styles.content}>
       {
         loading
-        ? <p>Загрузка изображения...</p>
+        ? <Text text='Загрузка изображения...' type='loading'/>
         : error
-          ? <p>Ошибка загрузки данных</p>
-          : <Image image={image} />
+          ? <Text text='Ошибка загрузки данных' type='error'/>
+          : <Image image={image}/>
       }
       </section>
     </div>

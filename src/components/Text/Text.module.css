@@ -1,0 +1,14 @@
+.text {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    color: black;
+}
+
+.text_loading {
+    color: green;
+}
+
+.text_error {
+    color: red;
+}
