@@ -2,6 +2,7 @@ import React from 'react';
 import './Checkbox.scss';
 
 interface CheckboxProps {
+  id: string;
   label: string;
   checked: boolean;
   onChange: (checked: boolean) => void;
@@ -9,6 +10,7 @@ interface CheckboxProps {
 }
 
 export const Checkbox: React.FC<CheckboxProps> = ({
+  id,
   label,
   checked,
   onChange,
@@ -22,13 +24,14 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   return (
     <div className='checkbox-container'>
       <input
+        id={id}
         type="checkbox"
         checked={checked}
         onChange={handleChange}
         disabled={disabled}
         className="checkbox-input"
       />
-      <label className="checkbox-label">
+      <label htmlFor={id} className="checkbox-label">
         {label}
       </label>
     </div>

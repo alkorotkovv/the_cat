@@ -45,12 +45,14 @@ export const App: React.FC = () => {
     <div className={styles.app}>
       <section className={styles.checkboxes}>
         <Checkbox
+          id='check1'
           label="Enable"
           checked={isChecked1}
           disabled={false}
           onChange={() => setIsChecked1(!isChecked1)}
         />
         <Checkbox
+          id='check2'
           label="Auto-refrash every 5 second"
           checked={isChecked2}
           disabled={false}
